@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PMDM Practica1</string>
+    <string name="Encabezado_app">Indice de masa corporal (IMC)</string>
+    <string name="peso">Peso (KG)</string>
+    <string name="altura">Altura (cm)</string>
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="Result">RESULTADO</string>
+    <string name="Peso_inferior_al_normal">Peso inferior al normal</string>
+    <string name="Nomral">Normal</string>
+    <string name="Sobrepeso">Sobrepeso</string>
+    <string name="Obesidad">Obesidad</string>
+
 </resources>
