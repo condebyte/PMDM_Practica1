@@ -1,18 +1,17 @@
 package com.condex.pmdmpractica1
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import com.condex.pmdmpractica1.databinding.ActivityMainBinding
+import java.io.IOException
+import java.io.OutputStreamWriter
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         val peso: TextView = findViewById(R.id.TextPeso)
         val altura: TextView = findViewById(R.id.TextoAltura)
 
-        var rbhombre:RadioButton?=null
-        var rbmujer:RadioButton?=null
+        //var rbhombre:RadioButton?=null
+        //var rbmujer:RadioButton?=null
+
+        val ishombre = binding.RBHombre.isChecked
+
 
         //el if es para verificar que se ha introducido el peso y la altura
 
@@ -52,41 +54,57 @@ class MainActivity : AppCompatActivity() {
             binding.TxtResultado.text= imcFormateado
 
             //Logica para que en el TXT de abajo aparezca el indicador fisico
-            val imcComparar = imcFormateado.toDouble()
-
-            rbhombre=findViewById(R.id.RBHombre)
-            rbmujer=findViewById(R.id.RBMujer)
-
-            if(rbhombre?.isChecked==true){
-                if(imcComparar < 18.5){
+            if(ishombre==true){
+                if(imc < 18.5){
                     binding.TxtInfo.text=getString(R.string.Peso_inferior_al_normal)
                 }else{
-                    if(imcComparar < 24.9){
+                    if(imc < 24.9){
                         binding.TxtInfo.text=getString(R.string.Nomral)
                     }else{
-                        if(imcComparar < 29.9){
+                        if(imc < 29.9){
                             binding.TxtInfo.text=getString(R.string.Sobrepeso)
                         }else{
-                            if(imcComparar > 30)binding.TxtInfo.text=getString(R.string.Obesidad)
+                            if(imc > 30)binding.TxtInfo.text=getString(R.string.Obesidad)
+                        }
+                    }
+                }
+            }else{
+                if(imc < 18.5){
+                    binding.TxtInfo.text=getString(R.string.Peso_inferior_al_normal)
+                }else{
+                    if(imc < 23.9){
+                        binding.TxtInfo.text=getString(R.string.Nomral)
+                    }else{
+                        if(imc < 28.9){
+                            binding.TxtInfo.text=getString(R.string.Sobrepeso)
+                        }else{
+                            if(imc > 29)binding.TxtInfo.text=getString(R.string.Obesidad)
                         }
                     }
                 }
             }
-            if(rbmujer?.isChecked==true){
-                if(imcComparar < 18.5){
-                    binding.TxtInfo.text=getString(R.string.Peso_inferior_al_normal)
-                }else{
-                    if(imcComparar < 23.9){
-                        binding.TxtInfo.text=getString(R.string.Nomral)
-                    }else{
-                        if(imcComparar < 28.9){
-                            binding.TxtInfo.text=getString(R.string.Sobrepeso)
-                        }else{
-                            if(imcComparar > 29)binding.TxtInfo.text=getString(R.string.Obesidad)
-                        }
-                    }
-                }
-            }
+            // Obtener la fecha actual
+            val hoy = Calendar.getInstance()
+            val fechaActual =
+                "${hoy.get(Calendar.DAY_OF_MONTH)}" + "/${hoy.get(Calendar.MONTH) + 1}" + "/${hoy.get(Calendar.YEAR)}"
+
+            // Llamar a la función para guardar el IMC
+            guardarIMC(fechaActual, if (ishombre) "Hombre" else "Mujer", imc, binding.TxtInfo.text.toString())
+
+        }
+
+    }
+    private fun guardarIMC(fecha: String, genero: String, imc: Double, descripcion: String) {
+        val archivo = "registro_imc.txt"
+        val line = "$fecha;$genero;$imc;$descripcion\n"
+        try {
+            val outputStreamWriter = OutputStreamWriter(openFileOutput(archivo, Context.MODE_APPEND))
+            outputStreamWriter.write(line)
+            outputStreamWriter.close()
+            Toast.makeText(this, "IMC registrado con éxito", Toast.LENGTH_SHORT).show()
+        } catch (e: IOException) {
+            Toast.makeText(this, "Error al guardar el IMC", Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
         }
     }
 }
