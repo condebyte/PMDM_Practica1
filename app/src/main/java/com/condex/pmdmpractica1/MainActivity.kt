@@ -1,10 +1,11 @@
 package com.condex.pmdmpractica1
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.condex.pmdmpractica1.databinding.ActivityMainBinding
 import java.io.IOException
 import java.io.OutputStreamWriter
@@ -12,6 +13,7 @@ import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,14 @@ class MainActivity : AppCompatActivity() {
         binding.BTNResult.setOnClickListener{
             setListener()
         }
+
+        binding.BTNHistorial.setOnClickListener{
+            val intent= Intent(this, MainActivity2::class.java)
+            startActivityForResult(intent,1234)
+
+        }
     }
+
 
     private fun setListener(){
 
@@ -90,6 +99,9 @@ class MainActivity : AppCompatActivity() {
 
             // Llamar a la función para guardar el IMC
             guardarIMC(fechaActual, if (ishombre) "Hombre" else "Mujer", imc, binding.TxtInfo.text.toString())
+
+
+
 
         }
 
