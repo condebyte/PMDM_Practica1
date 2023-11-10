@@ -18,7 +18,7 @@ class MainActivity2: AppCompatActivity() {
         setData()
     }
     private fun setData() {
-        imcadapter = Adapter(this, datosHistoricoIMC.getImcs())
+        imcadapter = Adapter(this, DataSource.dataSourceIMC.getImc(this))
         binding.imclist1.adapter = imcadapter
 
     }

@@ -3,7 +3,8 @@ package com.condex.pmdmpractica1
 object datosHistoricoIMC{
     private val imcs = ArrayList<IMC>()
 
-    init
+
+
 
     fun getImcs(): ArrayList<IMC> {
         return imcs
