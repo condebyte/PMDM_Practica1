@@ -1,8 +1,7 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.data
 
 object datosHistoricoIMC{
     private val imcs = ArrayList<IMC>()
-
 
 
 
@@ -10,11 +9,11 @@ object datosHistoricoIMC{
         return imcs
     }
 
-    fun saveCar(car :IMC){
+    fun saveCar(car : IMC){
         imcs.add(car)
     }
 
-    fun deleteCar(car :IMC){
+    fun deleteCar(car : IMC){
         imcs.remove(car)
     }
 }

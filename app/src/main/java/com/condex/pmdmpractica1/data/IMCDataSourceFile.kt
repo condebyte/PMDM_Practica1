@@ -1,4 +1,4 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.data
 
 import android.content.Context
 import java.io.BufferedReader
@@ -28,7 +28,7 @@ object IMCDataSourceFile: IIMCDataSource {
     }
 
     fun getFile(context: Context): File {
-        val carsFile = File(context.filesDir,fileName)
+        val carsFile = File(context.filesDir, fileName)
         if (!carsFile.exists()) {
             // Intenta crear el archivo
             try {

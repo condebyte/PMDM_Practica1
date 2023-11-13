@@ -1,4 +1,4 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.data
 
 import android.content.Context
 

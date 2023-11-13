@@ -1,4 +1,4 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.ui.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.condex.pmdmpractica1.R
 import com.condex.pmdmpractica1.databinding.ActivityMainBinding
 import java.io.IOException
 import java.io.OutputStreamWriter
@@ -13,7 +14,6 @@ import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding.BTNHistorial.setOnClickListener{
             val intent= Intent(this, MainActivity2::class.java)
             startActivityForResult(intent,1234)
-
         }
     }
 

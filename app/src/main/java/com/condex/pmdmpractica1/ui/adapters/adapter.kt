@@ -1,9 +1,10 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.condex.pmdmpractica1.data.IMC
 import com.condex.pmdmpractica1.databinding.ActivityRecyclerItemBinding
 
 class Adapter(
