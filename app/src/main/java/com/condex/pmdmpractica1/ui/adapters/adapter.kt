@@ -21,7 +21,9 @@ class Adapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
-        holder.binding.txtdata.text = item.data
+        holder.binding.txtanyo.text = item.año
+        holder.binding.txtmes.text = item.mes
+        holder.binding.txtdia.text = item.dia
         holder.binding.txtInfo.text = item.infoTxt
         holder.binding.txtsexo.text = item.genero
         holder.binding.txtimc.text = item.imc.toString()

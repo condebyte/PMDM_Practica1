@@ -48,7 +48,7 @@ object IMCDataSourceFile: IIMCDataSource {
         if (carsFile.exists()) {
             val writer = BufferedWriter(FileWriter(carsFile))
             cars.forEach { imc ->
-                writer.write("${imc.data};${imc.genero};${imc.imc};${imc.infoTxt}\n")
+                writer.write("${imc.dia};${imc.mes};${imc.año};${imc.genero};${imc.imc};${imc.infoTxt}\n")
             }
             writer.close()
         }
@@ -61,8 +61,8 @@ object IMCDataSourceFile: IIMCDataSource {
             var line: String?
             while (reader.readLine().also { line = it } != null) {
                 val parts = line!!.split(";")
-                if (parts.size == 4) {
-                    val imc = IMC(parts[0], parts[1], parts[2], parts[3])
+                if (parts.size == 6) {
+                    val imc = IMC(parts[0], parts[1], parts[2], parts[3],parts[4],parts[5])
                     cars.add(imc)
                 }
             }

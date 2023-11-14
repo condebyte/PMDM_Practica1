@@ -2,17 +2,22 @@ package com.condex.pmdmpractica1.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.condex.pmdmpractica1.R
 import com.condex.pmdmpractica1.databinding.ActivityMainBinding
 import java.io.IOException
 import java.io.OutputStreamWriter
+import java.time.Month
+import java.time.format.TextStyle
 import java.util.Calendar
+import java.util.Locale
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent,1234)
         }
     }
+
 
 
     private fun setListener(){
@@ -92,12 +98,22 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             // Obtener la fecha actual
+
+
             val hoy = Calendar.getInstance()
-            val fechaActual =
-                "${hoy.get(Calendar.DAY_OF_MONTH)}" + "/${hoy.get(Calendar.MONTH) + 1}" + "/${hoy.get(Calendar.YEAR)}"
+            val numeroMes = hoy.get(Calendar.MONTH) + 1
+
+            val dia="${hoy.get(Calendar.DAY_OF_MONTH)}"
+            val mes= if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Month.of(numeroMes).getDisplayName(TextStyle.FULL, Locale("es", "ES"))
+            } else {
+                TODO("VERSION.SDK_INT < O")
+            }
+            val anyo="${hoy.get(Calendar.YEAR)}"
+            val fechaActual = "${hoy.get(Calendar.DAY_OF_MONTH)}" + "/${hoy.get(Calendar.MONTH) + 1}" + "/${hoy.get(Calendar.YEAR)}"
 
             // Llamar a la función para guardar el IMC
-            guardarIMC(fechaActual, if (ishombre) "Hombre" else "Mujer", imc, binding.TxtInfo.text.toString())
+            guardarIMC(dia,mes,anyo, if (ishombre) "Hombre" else "Mujer", imcFormateado, binding.TxtInfo.text.toString())
 
 
 
@@ -105,9 +121,9 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private fun guardarIMC(fecha: String, genero: String, imc: Double, descripcion: String) {
+    private fun guardarIMC(dia: String,mes: String,anyo: String, genero: String, imc: String, descripcion: String) {
         val archivo = "registro_imc.txt"
-        val line = "$fecha;$genero;$imc;$descripcion\n"
+        val line = "$dia;$mes;$anyo;$genero;$imc;$descripcion\n"
         try {
             val outputStreamWriter = OutputStreamWriter(openFileOutput(archivo, Context.MODE_APPEND))
             outputStreamWriter.write(line)

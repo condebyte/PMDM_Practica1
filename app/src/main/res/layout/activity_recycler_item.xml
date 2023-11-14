@@ -5,9 +5,10 @@
     android:layout_height="wrap_content"
     android:background="#29C7DC"
     android:orientation="horizontal"
-    android:padding="16dp"
-    android:paddingStart="0.5dp"
-    android:paddingEnd="16dp">
+    android:padding="15dp"
+    android:layout_margin="5dp"
+
+    >
 
     <!-- Izquierda - Mes, Día, Año -->
     <LinearLayout
@@ -18,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtdata"
+            android:id="@+id/txtmes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -28,6 +29,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtdia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7"
@@ -35,6 +37,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtanyo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022"

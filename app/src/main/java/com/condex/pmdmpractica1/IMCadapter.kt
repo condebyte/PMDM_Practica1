@@ -36,7 +36,7 @@ class IMCadapter():BaseAdapter() {
         ) as LayoutInflater
         val binding = ActivityRecyclerItemBinding.inflate(inflator)
 
-        binding.txtdata.text = item.data
+        //binding.txtdata.text = item.data
         binding.txtInfo.text = item.infoTxt
         binding.txtsexo.text = item.genero
         return binding.root
