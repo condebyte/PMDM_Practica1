@@ -19,7 +19,6 @@ import java.util.Locale
 
 class  MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,9 +33,6 @@ class  MainActivity : AppCompatActivity() {
             startActivityForResult(intent,1234)
         }
     }
-
-
-
     private fun setListener(){
 
         val peso: TextView = findViewById(R.id.TextPeso)
