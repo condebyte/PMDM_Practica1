@@ -32,7 +32,8 @@ class Adapter(
     override fun getItemCount(): Int = list.size
 
     fun setData(newList: ArrayList<IMC>) {
-        list = newList
-        notifyDataSetChanged() // Notify any registered observers that the data set has changed.
+        list.clear() // Limpia la lista actual
+        list.addAll(newList) // Añade todos los nuevos elementos a la lista
+        notifyDataSetChanged() // Notifica al adapter que los datos han cambiado
     }
 }

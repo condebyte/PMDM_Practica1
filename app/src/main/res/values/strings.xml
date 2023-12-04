@@ -10,5 +10,7 @@
     <string name="Nomral">Normal</string>
     <string name="Sobrepeso">Sobrepeso</string>
     <string name="Obesidad">Obesidad</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

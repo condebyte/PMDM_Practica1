@@ -1,4 +1,4 @@
-package com.condex.pmdmpractica1
+package com.condex.pmdmpractica1.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

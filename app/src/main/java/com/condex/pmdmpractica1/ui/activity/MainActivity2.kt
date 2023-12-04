@@ -3,7 +3,6 @@ package com.condex.pmdmpractica1.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.condex.pmdmpractica1.IMCadapter
 import com.condex.pmdmpractica1.databinding.RecyclerViewPesosBinding
 import com.condex.pmdmpractica1.ui.adapters.Adapter
 import com.condex.pmdmpractica1.data.DataSource
